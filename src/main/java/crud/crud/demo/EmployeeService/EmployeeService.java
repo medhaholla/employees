@@ -12,4 +12,6 @@ public interface EmployeeService {
     Employee createEmployee(Employee employee);
     List<Employee> getEmployees();
     void deleteEmployee(UUID id);
+
+    Employee updateEmployee(UUID id, Employee employee);
 }

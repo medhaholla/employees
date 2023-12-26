@@ -34,10 +34,17 @@ public class employeeController {
         return new ResponseEntity<>(employeeList, HttpStatus.OK);
    }
 
-    @DeleteMapping("/api/employees/{employeeId}")
+    @DeleteMapping("api/employees/{employeeId}")
     public ResponseEntity<String> deleteEmployee(@PathVariable UUID employeeId) {
         employeeService.deleteEmployee(employeeId);
         return new ResponseEntity<>( "Employee Deleted", HttpStatus.OK);
-        
+
+    }
+
+    @PostMapping("api/updateEmployee")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable UUID id, @RequestBody Employee employee){
+       Employee updatedEmployee = employeeService.updateEmployee(id, employee);
+
+       return new ResponseEntity<>(updatedEmployee , HttpStatus.OK);
     }
 }

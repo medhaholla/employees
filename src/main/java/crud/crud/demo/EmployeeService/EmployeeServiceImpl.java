@@ -30,5 +30,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     }
 
+    @Override
+    public Employee updateEmployee(UUID id, Employee employee) {
+          Employee e = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("id not found for id " + id));
+
+          employee.setId(id);
+          return repository.save(employee);
+
+    }
+
 
 }
