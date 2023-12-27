@@ -28,8 +28,9 @@ public class employeeController {
        Employee savedEmployee = employeeService.createEmployee(employee);
        String to = emailService.getManager(savedEmployee);
        String from = "testexample280@gmail.com";
-        String subject = "Second: Sending email using GMail";
-        String text = "This is a example email send using gmail and java program with out less secure app";
+        String subject = "Manager Assign";
+        String text = savedEmployee.getEmployeeName() +
+                "will now work under you. Mobile number is "+ savedEmployee.getPhoneNumber() +"and email is " + savedEmployee.getEmail();
         System.out.println(from);
         System.out.println(to);
 
