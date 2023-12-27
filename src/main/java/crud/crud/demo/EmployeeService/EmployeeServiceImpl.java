@@ -12,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService{
     private employeeRepository repository;
+    private Employee employee;
 
     @Override
     public Employee createEmployee(Employee employee) {

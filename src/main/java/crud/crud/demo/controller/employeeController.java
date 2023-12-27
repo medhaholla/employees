@@ -1,5 +1,6 @@
 package crud.crud.demo.controller;
 
+import crud.crud.demo.EmailService;
 import crud.crud.demo.EmployeeService.EmployeeService;
 import crud.crud.demo.Entity.Employee;
 import lombok.AllArgsConstructor;
@@ -20,10 +21,20 @@ import java.util.UUID;
 
 public class employeeController {
   private EmployeeService employeeService;
+  private EmailService emailService;
 
     @PostMapping("api/addEmployee")
    public ResponseEntity<UUID> createEmployee(@RequestBody Employee employee){
        Employee savedEmployee = employeeService.createEmployee(employee);
+       String to = emailService.getManager(savedEmployee);
+       String from = "testexample280@gmail.com";
+        String subject = "Second: Sending email using GMail";
+        String text = "This is a example email send using gmail and java program with out less secure app";
+        System.out.println(from);
+        System.out.println(to);
+
+       emailService.sendEmail(to, from, text, subject);
+
 
        return new ResponseEntity<>(savedEmployee.getId(), HttpStatus.CREATED);
    }

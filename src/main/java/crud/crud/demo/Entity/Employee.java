@@ -8,14 +8,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
-
+@Component
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 
 public class Employee {
     @Id
